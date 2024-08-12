@@ -43,4 +43,8 @@ if [ $1 -eq 1 ] ; then
                  --slave /usr/share/man/man1/jstatd.1 jstatd.1 ${RPM_INSTALL_PREFIX}/man/man1/jstatd.1 \
                  --slave /usr/share/man/man1/rmic.1 rmic.1 ${RPM_INSTALL_PREFIX}/man/man1/rmic.1 \
                  --slave /usr/share/man/man1/serialver.1 serialver.1 ${RPM_INSTALL_PREFIX}/man/man1/serialver.1 
+
+     if [ -e /usr/bin/update-ca-trust ] ; then
+         /usr/bin/update-ca-trust
+     fi
 fi
