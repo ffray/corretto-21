@@ -17,7 +17,3 @@ for i in @jdk_tools@; do
         $cmd
     fi
 done
-
-if [ -e /usr/bin/update-ca-certificates ]; then
-    /usr/bin/update-ca-certificates
-fi

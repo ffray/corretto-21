@@ -112,6 +112,7 @@ task generateJdkRpm(type: Rpm) {
     preUninstall file("$buildRoot/scripts/preun_java.sh")
     preUninstall file("$buildRoot/scripts/preun_javac.sh")
 
+    requires('ca-certificates')
     requires('zlib')
 
     provides(jdkPackageName, "${epoch}:${version}-${release}", EQUAL)
@@ -137,6 +138,8 @@ task generateJdkRpm(type: Rpm) {
         into jdkHome
         exclude 'legal'
         exclude(project.configurationFiles)
+        exclude 'lib/security/cacerts'
+        link( "${jdkHome}/lib/security/cacerts", '/etc/pki/ca-trust/extracted/java/cacerts')
     }
 
     // Copy legal directory specifically to set permission correctly.

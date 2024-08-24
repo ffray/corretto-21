@@ -135,6 +135,7 @@ task generateJdkDeb(type: Deb) {
     postInstall file("$buildRoot/scripts/postin_jdk.sh")
     preUninstall file("$buildRoot/scripts/preun_jdk.sh")
 
+    requires('ca-certificates-java')
     requires('java-common')
     requires('zlib1g')
     // jdk
@@ -182,6 +183,9 @@ task generateJdkDeb(type: Deb) {
         into jdkHome
         exclude 'legal'
         exclude(project.configurationFiles)
+        exclude 'lib/security/cacerts'
+
+        link( "${jdkHome}/lib/security/cacerts", '/etc/ssl/certs/java/cacerts' )
     }
 
     // Copy legal directory specifically to set permission correctly.

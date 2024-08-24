@@ -14,8 +14,4 @@ if [ $1 -eq 1 ] ; then
                   --slave /usr/share/man/man1/rmid.1 rmid.1 ${RPM_INSTALL_PREFIX}/man/man1/rmid.1 \
                   --slave /usr/share/man/man1/rmiregistry.1 rmiregistry.1 ${RPM_INSTALL_PREFIX}/man/man1/rmiregistry.1 \
                   --slave /usr/share/man/man1/unpack200.1 unpack200.1 ${RPM_INSTALL_PREFIX}/man/man1/unpack200.1
-
-     if [ -e /usr/bin/update-ca-trust ] ; then
-         /usr/bin/update-ca-trust
-     fi
 fi
